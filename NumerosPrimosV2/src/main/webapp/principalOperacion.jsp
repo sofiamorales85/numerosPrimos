@@ -18,11 +18,14 @@
 			<div class ="card" >
 				<div class ="card-header">
 					<h3 class = "d-flex justify-content-center">Evaluar número</h3>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							
-						</div>
+					<div class="card-header">
+						<label style = "color: white;" for="numero">Ingrese el número a evaluar:</label>
+						<div class="input-group form-group">	
 						<input type="text" class="form-control" id="numero" name="numero" placeholder="Número a evaluar > 1">
+						</div>
+					</div>
+					<div class="input-group form-group">
+						<button class="btn float-right login_btn" type="submit">Enviar</button>
 					</div>
 				</div>
 			</div>
