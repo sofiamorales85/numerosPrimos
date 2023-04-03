@@ -40,12 +40,15 @@ public class InicioSesion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		usuario objUsuario = new usuario();
 		
 		//obtenemos variables de formulario	
 		String usuarioLocal = request.getParameter("usuario");
 		System.out.println("Usuario del formulario " + usuarioLocal);
 		String contraseniaLocal= request.getParameter("contrasenia");
+		Date fechaIngresoSesion =new Date();
+		
+		
+		usuario objUsuario = new usuario(usuarioLocal,contraseniaLocal,fechaIngresoSesion);
 				
 		if((usuarioLocal != null) && (contraseniaLocal != null) ) {
 			//Captura usuario y clave en ámbito de sesion
@@ -53,7 +56,6 @@ public class InicioSesion extends HttpServlet {
 			String usuarioSesion = objUsuario.setNombre_usuario(usuarioLocal);
 			System.out.println("Usuario del usuarioSesion " + usuarioSesion);
 			String contrasenia = objUsuario.setContrasenia(contraseniaLocal);
-			Date fechaIngresoSesion = objUsuario.setFecha_hora(new Date());
 			
 			sesion.setAttribute("usuario", usuarioSesion);
 			sesion.setAttribute("contrasenia", contrasenia);
