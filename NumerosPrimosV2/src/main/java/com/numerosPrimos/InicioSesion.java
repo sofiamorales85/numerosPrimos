@@ -15,7 +15,6 @@ import java.util.Date;
  */
 public class InicioSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    usuario objUsuario = new usuario();
     
     /**
      * @see HttpServlet#HttpServlet()
