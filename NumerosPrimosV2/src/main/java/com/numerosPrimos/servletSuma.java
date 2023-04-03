@@ -1,10 +1,10 @@
 package com.numerosPrimos;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,8 +44,14 @@ public class servletSuma extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
+		HttpSession sesion = request.getSession();
+		
+		usuario usuarioSesion = (usuario) sesion.getAttribute("usuario");
+		System.out.println("Usuario sesion SUMA: " + usuarioSesion);
+		
 		int sumaPrimos = 0;
-		// leer la el número del formulario index
+		int numeroPrimo =0;
+		// leer la el número del formulario principalOperacion
 		int numeroIngresado = Integer.parseInt(request.getParameter("numero"));
 		// Llamar al metodo para evaluar el producto y que sume los primos menores a el.
 		System.out.println(intentos + " candidad de intentos");
@@ -56,6 +62,7 @@ public class servletSuma extends HttpServlet {
 				for (int i = 2; i <= numeroIngresado; i++) {
 					int creciente = 2;
 					boolean esPrimo = true;
+					System.out.println("Ingresa al IF");
 
 					while (esPrimo && creciente < i) {
 
@@ -67,23 +74,24 @@ public class servletSuma extends HttpServlet {
 					}
 					if (esPrimo) {
 						System.out.println(i + " es un número primo.");
+						numeroPrimo = i;
 						sumaPrimos = sumaPrimos + i;
 					}
 				}
 				request.setAttribute("resultado", sumaPrimos);
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				/*request.getRequestDispatcher("/principalOperacion.jsp").forward(request, response);*/
 				System.out.println("La suma de los números primos menores a " + numeroIngresado + " es: " + sumaPrimos);
 
 				FileWriter archivo = new FileWriter("C:\\Users\\ejeymoz\\Downloads\\numerosPrimos.txt", true);
 				PrintWriter pw = new PrintWriter(archivo);
 				pw.println("Intento #: " + intentos + " suma de los primos: " + sumaPrimos + " del numero ingresado: "
-						+ numeroIngresado);
+						+ numeroIngresado + "usuario ingresado: " + usuarioSesion);
 				pw.close();
 				intentos += 1;
 
 			} else {
 				request.setAttribute("resultado", "invalido");
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				/*request.getRequestDispatcher("/principalOperacion.jsp").forward(request, response);*/
 				System.out.println("El número es inválido " + numeroIngresado + " intentelo de nuevo");
 			}
 			{
