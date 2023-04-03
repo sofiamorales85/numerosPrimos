@@ -130,6 +130,8 @@ background-color: #FFC312;
 width: 100px;
 margin-top: 50px;
 margin-left: 280px;
+display: block;
+margin: 0 auto;
 }
 
 .login_btn:hover{
