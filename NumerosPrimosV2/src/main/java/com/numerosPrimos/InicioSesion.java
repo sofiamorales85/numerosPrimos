@@ -1,20 +1,22 @@
 package com.numerosPrimos;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Servlet implementation class InicioSesion
  */
 public class InicioSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    usuario objUsuario = new usuario();
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -22,6 +24,7 @@ public class InicioSesion extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,15 +40,25 @@ public class InicioSesion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-	
-		String usuarioLocal = request.getParameter("usuario");
-		String contraseniaLocal= request.getParameter("contrasenia");
+		usuario objUsuario = new usuario();
 		
+		//obtenemos variables de formulario	
+		String usuarioLocal = request.getParameter("usuario");
+		System.out.println("Usuario del formulario " + usuarioLocal);
+		String contraseniaLocal= request.getParameter("contrasenia");
+				
 		if((usuarioLocal != null) && (contraseniaLocal != null) ) {
 			//Captura usuario y clave en ámbito de sesion
 			HttpSession sesion = request.getSession();
-			sesion.setAttribute("usuario", usuarioLocal);
-			sesion.setAttribute("contrasenia", contraseniaLocal);
+			String usuarioSesion = objUsuario.setNombre_usuario(usuarioLocal);
+			System.out.println("Usuario del usuarioSesion " + usuarioSesion);
+			String contrasenia = objUsuario.setContrasenia(contraseniaLocal);
+			Date fechaIngresoSesion = objUsuario.setFecha_hora(new Date());
+			
+			sesion.setAttribute("usuario", usuarioSesion);
+			sesion.setAttribute("contrasenia", contrasenia);
+			sesion.setAttribute("fecha", fechaIngresoSesion);
+			
 			getServletContext().getRequestDispatcher("/principalOperacion.jsp").forward(request, response);
 		}else {
 			request.setAttribute("usuarioValido", "invalido");
