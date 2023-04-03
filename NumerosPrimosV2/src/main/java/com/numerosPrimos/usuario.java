@@ -1,15 +1,13 @@
 package com.numerosPrimos;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class usuario {
 
 	// ------------------------
-	// MEMBER VARIABLES
+	// atributos
 	// ------------------------
-	// Usuario Attributes
 	private String nombre_usuario;
-	private String correo;
 	private String contrasenia;
 	private Date fecha_hora;
 
@@ -17,10 +15,9 @@ public class usuario {
 	// CONSTRUCTOR
 	// ------------------------
 	public usuario(String aNombre_usuario, String aCorreo, String aContrasenia, Date aFecha_hora) {
-		nombre_usuario = aNombre_usuario;
-		correo = aCorreo;
-		contrasenia = aContrasenia;
-		fecha_hora = aFecha_hora;
+		this.nombre_usuario = aNombre_usuario;
+		this.contrasenia = aContrasenia;
+		this.fecha_hora = aFecha_hora;
 	}
 
 	// ------------------------
@@ -30,32 +27,24 @@ public class usuario {
 		return nombre_usuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public String setNombre_usuario(String usuario) {
+		return this.nombre_usuario = usuario;
 	}
 
 	public String getContrasenia() {
 		return contrasenia;
 	}
 
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+	public String setContrasenia(String contrasenia) {
+		return this.contrasenia = contrasenia;
 	}
 
 	public Date getFecha_hora() {
 		return fecha_hora;
 	}
 
-	public void setFecha_hora(Date fecha_hora) {
-		this.fecha_hora = fecha_hora;
+	public Date setFecha_hora(Date fecha_hora) {
+		return this.fecha_hora = fecha_hora;
 	}
 
 }
