@@ -14,7 +14,7 @@ public class usuario {
 	// ------------------------
 	// CONSTRUCTOR
 	// ------------------------
-	public usuario(String aNombre_usuario, String aCorreo, String aContrasenia, Date aFecha_hora) {
+	public usuario(String aNombre_usuario, String aContrasenia, Date aFecha_hora) {
 		this.nombre_usuario = aNombre_usuario;
 		this.contrasenia = aContrasenia;
 		this.fecha_hora = aFecha_hora;
