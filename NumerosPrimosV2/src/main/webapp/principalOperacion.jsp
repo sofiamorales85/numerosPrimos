@@ -19,6 +19,16 @@
 				<div class ="card-header">
 					<h3 class = "d-flex justify-content-center">Evaluar número</h3>
 				</div>
+				<div class = "card-body">
+					<form action="servletSuma" method="post">
+						<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario">
+					</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
